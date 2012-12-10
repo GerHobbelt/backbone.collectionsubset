@@ -72,6 +72,11 @@
       this.child.superset = this.parent;
       this.child.filterer = this;
       this.child.url = this.parent.url;
+
+      this.child.fetch = function(options) {
+        return this.fetch.call(this,options);
+      }.bind(this.parent);
+  
       return this.child.model = this.parent.model;
     };
 
@@ -139,6 +144,11 @@
       if (!this.triggerMatched(model)) {
         return;
       }
+
+      if (this.parent.indexOf(model) == -1) {
+        return;
+      }
+      
       if (this.filter(model)) {
         return this.child.add(model);
       } else {
