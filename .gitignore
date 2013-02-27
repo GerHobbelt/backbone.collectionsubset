@@ -1,1 +1,9 @@
-node_modules/*
+# Editor backup files
+*~
+*.bak
+
+# MSOffice temporary files
+~*
+
+# build utility directories
+node_modules/*              
